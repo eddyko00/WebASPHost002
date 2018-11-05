@@ -16,10 +16,12 @@ SQL = "SELECT * FROM customer"
 Set Connection = Server.CreateObject("ADODB.Connection")
 Set Recordset = Server.CreateObject("ADODB.Recordset")
 
+'Open the connection to the database
 'define the connection string, specify database driver
 'remember to add a ; at the end
-'remember to add a ; at the end
-ConnString="DRIVER={SQL Server};SERVER=sql.freeasphost.net\MSSQL2016;UID=eddyko00_SampleDB;PWD=DBSamplePW;DATABASE=eddyko00_SampleDB;"
+ConnString="Driver={SQL Server};Server=sql.freeasphost.net\MSSQL2016;Database=eddyko00_SampleDB;Uid=eddyko00_SampleDB;Pwd=DBSamplePW;"
+
+Response.Write("ConnString " & ConnString)
 
 'Open the connection to the database
 Connection.Open ConnString
@@ -45,7 +47,6 @@ Recordset.Close
 Set Recordset=nothing
 Connection.Close
 Set Connection=nothing
-
 %>
 
 Welcome
@@ -57,3 +58,4 @@ response.write(" " & request.form("lname"))
 
 </body>
 </html>
+
