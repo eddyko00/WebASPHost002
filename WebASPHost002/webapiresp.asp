@@ -15,20 +15,20 @@ Dim SQLResp
 SQL = "SELECT * FROM customer"
 cmd  = request.form("cmd")
 req  = request.form("req")
-resp = request.form("resp")
+req1 = request.form("req1")
 
 
-If isNULL(req) Then
+'If isNULL(req) Then
     SQL = req
-End If
+'End If
 
-Response.Write(cmd) 
+Response.Write("cmd=" & cmd) 
 Response.write "<br>" 
-Response.Write(req) 
+Response.Write("req=" & req) 
 Response.write "<br>" 
-Response.Write(resp) 
+Response.Write("req1=" & req1) 
 Response.write "<br>" 
-Response.Write(SQL) 
+Response.Write("SQL=" & SQL) 
 Response.write "<br>" 
 
 'create an instance of the ADO connection and recordset objects
@@ -40,6 +40,20 @@ Set Recordset = Server.CreateObject("ADODB.Recordset")
 'remember to add a ; at the end
 ConnString="DRIVER={SQL Server};SERVER=sql.freeasphost.net\MSSQL2016;UID=eddyko00_SampleDB;PWD=DBSamplePW;DATABASE=eddyko00_SampleDB;"
 
+
+If cmd = "2" Then
+    'Open the connection to the database
+    Connection.Open ConnString
+
+    Connection.Execute SQL,adExecuteNoRecords  
+    Response.write ("~~ ") 
+    Response.write (adExecuteNoRecords)
+    Response.write (" ~~")  
+    ' close the connection
+    Connection.Close
+    Set Connection=nothing
+End If  
+        
 If cmd = "1" Then
 
     'Open the connection to the database
@@ -50,7 +64,7 @@ If cmd = "1" Then
 
     'first of all determine whether there are any records 
     If Recordset.EOF Then 
-        Response.Write("No records returned.") 
+        Response.Write(" ") 
     Else 
         SQLResp = SQLResp & "["
 
