@@ -12,6 +12,14 @@ Dim SQL
 
 'declare the SQL statement that will query the database
 SQL = "SELECT * FROM customer"
+cmd = request.form("cmd")
+Dim sqlCmd as string = request.form("sql")
+
+If Len(sqlCmd) > 0 Then
+SQL = sqlCmd
+End If
+Response.Write(SQL) 
+
 'create an instance of the ADO connection and recordset objects
 Set Connection = Server.CreateObject("ADODB.Connection")
 Set Recordset = Server.CreateObject("ADODB.Recordset")
@@ -68,6 +76,13 @@ Connection.Close
 Set Connection=nothing
 
 %>
+
+Welcome
+<%
+response.write(request.form("fname"))
+response.write(" " & request.form("lname"))
+%>
+
 
 </body>
 </html>
