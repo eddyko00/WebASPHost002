@@ -12,22 +12,24 @@ Dim SQL
 Dim SQLResp
 
 'declare the SQL statement that will query the database
-SQL = "SELECT * FROM customer"
-cmd  = request.form("cmd")
+'setRequestHeader "Content-type", "application/x-www-form-urlencoded";
+SQL = "SELECT * FROM account"
+cmd  = request.QueryString("cmd")
 req  = request.form("req")
-req1 = request.form("req1")
 
 
-'If isNULL(req) Then
-    SQL = req
-'End If
+If isNULL(req) Then
+    cmd = 0
+End If
+
+SQL = req
 
 Response.Write("cmd=" & cmd) 
 Response.write "<br>" 
 Response.Write("req=" & req) 
 Response.write "<br>" 
-Response.Write("req1=" & req1) 
-Response.write "<br>" 
+'Response.Write("req1=" & req1) 
+'Response.write "<br>" 
 Response.Write("SQL=" & SQL) 
 Response.write "<br>" 
 
