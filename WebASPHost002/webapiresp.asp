@@ -8,28 +8,39 @@
 'declare the variables 
 Dim Connection
 Dim Recordset
+Dim cmd
+Dim cmdreq
+Dim cmdpost
+Dim req
 Dim SQL
 Dim SQLResp
 
 'declare the SQL statement that will query the database
 'setRequestHeader "Content-type", "application/x-www-form-urlencoded";
 SQL = "SELECT * FROM account"
-cmd  = request.QueryString("cmd")
+cmdreq = request.QueryString("cmd")
+cmdpost = request.form("cmdpost")
 req  = request.form("req")
+        
+cmd =0
+If not isnull(cmdreq) Then
+    if len(cmdreq) > 0 Then
+    cmd = cmdreq
+    End if
+End if
 
-
-If isNULL(req) Then
-    cmd = 0
-End If
+If not isnull(cmdpost) Then
+    if len(cmdpost) > 0 Then
+    cmd = cmdpost
+    End if
+End if
 
 SQL = req
 
 Response.Write("cmd=" & cmd) 
 Response.write "<br>" 
-Response.Write("req=" & req) 
+Response.Write("cmdpost=" & cmdpost) 
 Response.write "<br>" 
-'Response.Write("req1=" & req1) 
-'Response.write "<br>" 
 Response.Write("SQL=" & SQL) 
 Response.write "<br>" 
 

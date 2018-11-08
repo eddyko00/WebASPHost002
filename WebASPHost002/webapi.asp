@@ -5,7 +5,7 @@
     </head>
     <body>
 <form method="post" action="webapiresp.asp">
-cmd: <input type="text" name="cmd"><br>
+cmdpost: <input type="text" name="cmdpost"><br>
 req: <input type="text" name="req"><br>
 <br>
 <input type="submit" value="Submit">
