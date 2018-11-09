@@ -41,9 +41,10 @@ Response.Write("cmd=" & cmd)
 Response.write "<br>" 
 Response.Write("cmdpost=" & cmdpost) 
 Response.write "<br>" 
+
 If cmd = 0 Then
-Response.Write("SQL=" & SQL) 
-Response.write "<br>" 
+    Response.Write("SQL=" & SQL) 
+    Response.write "<br>" 
 End If
 
 'create an instance of the ADO connection and recordset objects
@@ -80,7 +81,7 @@ If cmd = "3" Then
         End If
     End If 
     Response.write ("~~ ") 
-    Response.write (i)
+    Response.write (i-1)
     Response.write (" ~~")  
 
     ' close the connection
