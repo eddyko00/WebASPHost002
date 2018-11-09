@@ -53,6 +53,38 @@ Set Recordset = Server.CreateObject("ADODB.Recordset")
 'remember to add a ; at the end
 ConnString="DRIVER={SQL Server};SERVER=sql.freeasphost.net\MSSQL2016;UID=eddyko00_SampleDB;PWD=DBSamplePW;DATABASE=eddyko00_SampleDB;"
 
+If cmd = "3" Then
+    'Open the connection to the database
+    Connection.Open ConnString
+
+    If Len(SQL) > 0 Then
+        Dim updateParamArray
+        updateParamArray = Split(SQL , "~")
+       
+        If UBound(updateParamArray ) > -1 Then
+          Dim i
+          Dim name, param
+
+          For i = 0 To UBound(updateParamArray )
+            param = updateParamArray(i)
+            name = ""
+            name = param
+            If name <> "" Then
+                'Response.write (i & " " & name)
+                'Response.write ("<br>")      
+                Connection.Execute name,adExecuteNoRecords  
+            End If
+          Next
+        End If
+    End If 
+    Response.write ("~~ ") 
+    Response.write (i)
+    Response.write (" ~~")  
+
+    ' close the connection
+    Connection.Close
+    Set Connection=nothing
+End If  
 
 If cmd = "2" Then
     'Open the connection to the database
