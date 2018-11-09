@@ -41,8 +41,10 @@ Response.Write("cmd=" & cmd)
 Response.write "<br>" 
 Response.Write("cmdpost=" & cmdpost) 
 Response.write "<br>" 
+If cmd = 0 Then
 Response.Write("SQL=" & SQL) 
 Response.write "<br>" 
+End If
 
 'create an instance of the ADO connection and recordset objects
 Set Connection = Server.CreateObject("ADODB.Connection")
